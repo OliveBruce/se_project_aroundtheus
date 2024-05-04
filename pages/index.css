@@ -16,6 +16,7 @@
   box-sizing: border-box;
 }
 .header__logo {
+  width: 20%;
   max-width: 173px;
   min-width: 126px;
   margin: 0;
@@ -45,17 +46,19 @@
   height: 120px;
   border-radius: 50%;
   margin: 0;
-  padding: 0 30px 0 0;
+  padding: 0;
 }
 
 .profile__info {
   width: 48%;
   max-width: 415px;
   margin: 0;
-  padding: 0 165px 0 0;
+  padding: 0 165px 0 30px;
 }
 
 .profile__name {
+  width: 100%;
+  max-width: 415px;
   margin: 0;
   padding: 0 0 7px;
   display: flex;
@@ -120,34 +123,42 @@
   margin: 0 auto;
   padding: 50px 0 0;
   display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, auto-fit);
-  grid-template-rows: repeat(auto-fill, auto-fit);
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
   grid-gap: 17px;
 }
 
 .card {
-  width: 282px;
-  max-height: 360px;
+  max-width: 282px;
+  min-height: 360px;
   background-color: white;
   border: none;
   border-radius: 10px;
   overflow: hidden;
-  position: relative;
 }
 
 .card__image {
   margin: 0;
   padding: 0 0 25px;
+  max-width: 100%;
+}
+
+.card__description {
   width: 100%;
+  max-width: 242px;
+  margin: 0;
+  padding: 0 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 .card__title {
   max-width: 219px;
   font-size: 24px;
+  line-height: 1.2;
   font-weight: 900;
   margin: 0;
-  padding: 0 0 25px 20px;
+  padding: 0;
   color: black;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -155,9 +166,6 @@
 }
 
 .card__button {
-  position: absolute;
-  right: 20px;
-  bottom: 30px;
   outline: none;
   background: url(../images/like-inactive.svg) no-repeat center;
   margin: 0;
@@ -173,16 +181,11 @@
   opacity: 0.5;
 }
 
-.footer {
-  width: 100%;
-  margin: auto;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .footer__content {
+  width: 69%;
+  max-width: 880px;
+  margin: auto;
+  padding: 66px 0 60px;
   font-weight: 400;
   color: #545454;
-  margin: 0;
-  padding: 66px 0 60px;
 }
