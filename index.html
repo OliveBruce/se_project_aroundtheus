@@ -15,12 +15,14 @@
   </head>
   <body class="page">
     <header class="header">
-      <img
-        src="./images/logo.svg"
-        alt="Around The US Logo"
-        class="header__logo"
-      />
-      <span class="header__division"></span>
+      <div class="header__container">
+        <img
+          src="./images/logo.svg"
+          alt="Around The US Logo"
+          class="header__logo"
+        />
+        <span class="header__division"></span>
+      </div>
     </header>
     <main class="content">
       <section class="profile">
@@ -30,11 +32,13 @@
           class="profile__avatar"
         />
         <div class="profile__info">
-          <h1 class="profile__name">Jacques Cousteau</h1>
-          <button type="submit" class="profile__button-edit"></button>
+          <div class="profile__name">
+            <h1 class="profile__name-text">Jacques Cousteau</h1>
+            <button type="button" class="profile__button-edit"></button>
+          </div>
           <p class="profile__description">Explorer</p>
         </div>
-        <button type="submit" class="profile__button-add"></button>
+        <button type="button" class="profile__button-add"></button>
       </section>
       <section class="cards">
         <article class="card">
