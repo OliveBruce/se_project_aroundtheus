@@ -1,0 +1,52 @@
+.card {
+  max-width: 282px;
+  min-height: 360px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card__image {
+  margin: 0;
+  padding: 0 0 25px;
+  max-width: 100%;
+}
+
+.card__description {
+  max-width: 242px;
+  margin: 0;
+  padding: 0 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.card__title {
+  max-width: 219px;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
+  color: black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card__button {
+  outline: none;
+  background: url(../images/like-inactive.svg) no-repeat center;
+  margin: 0;
+  padding: 0;
+  width: 21px;
+  height: 18px;
+  border: none;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+}
+
+.card__button:hover {
+  opacity: 0.5;
+}

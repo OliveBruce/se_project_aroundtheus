@@ -1,0 +1,11 @@
+.footer__content {
+  padding: 66px 0 60px;
+  font-weight: 400;
+  color: #545454;
+}
+
+@media screen and (max-width: 621px) {
+  .footer__content {
+    padding: 48px 0 36px;
+  }
+}
