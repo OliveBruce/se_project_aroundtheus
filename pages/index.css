@@ -17,16 +17,13 @@
 }
 
 .header__logo {
-  width: 20%;
   max-width: 173px;
-  min-width: 126px;
   margin: 0;
   padding: 0 0 41px 0;
 }
 
 .header__division {
-  width: 100%;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #545454;
 }
 
 .content {
@@ -34,7 +31,6 @@
 }
 
 .profile {
-  width: 100%;
   max-width: 880px;
   margin: 0 auto;
   padding: 0;
@@ -52,15 +48,13 @@
 }
 
 .profile__info {
-  width: 48%;
   max-width: 415px;
   margin: 0;
-  padding: 0 165px 0 30px;
+  padding: 0 18.75% 0 3.41%;
 }
 
 .profile__name {
-  width: 100%;
-  max-width: 415px;
+  min-width: 415px;
   margin: 0;
   padding: 0 0 7px;
   display: flex;
@@ -72,8 +66,8 @@
   max-width: 375px;
   margin: 0;
   padding: 0;
-  font-weight: 500;
   font-size: 42px;
+  font-weight: 500;
   line-height: 1.15;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -123,13 +117,13 @@
 }
 
 .cards {
-  width: 100%;
   max-width: 880px;
   margin: 0 auto;
   padding: 50px 0 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  grid-template-columns: repeat(auto-fit, 282px);
   grid-gap: 17px;
+  justify-content: center;
 }
 
 .card {
@@ -148,7 +142,6 @@
 }
 
 .card__description {
-  width: 100%;
   max-width: 242px;
   margin: 0;
   padding: 0 20px;
@@ -187,7 +180,6 @@
 }
 
 .footer__content {
-  width: 69%;
   max-width: 880px;
   margin: auto;
   padding: 66px 0 60px;
@@ -195,45 +187,73 @@
   color: #545454;
 }
 
-@media screen and (max-width: 1279px) and (min-width: 321px) {
+@media screen and (max-width: 880px) and (min-width: 581px) {
+  .header__logo {
+    max-width: 147px;
+    padding: 0 0 38px 13px;
+  }
+
   .profile {
+    flex-wrap: nowrap;
+    flex-direction: column;
     justify-content: center;
   }
   .profile__info {
-    padding: 0 19% 0 3%;
-  }
-
-  .profile__name-text {
-    font-size: calc(22px + 1.5vw);
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .header__container {
-    margin: 28px 0 42px;
-  }
-
-  .header__logo {
-    padding: 0 0 32px 27px;
-  }
-
-  .profile {
-    width: 88%;
-    flex-wrap: nowrap;
-    flex-direction: column;
-  }
-
-  .profile__info {
-    width: 100%;
     padding: 36px 0 30px 0;
   }
 
   .profile__name {
+    min-width: 282px;
     justify-content: center;
     column-gap: 10px;
   }
 
   .profile__name-text {
+    max-width: 286px;
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .profile__button-edit {
+    width: 21px;
+    height: 21px;
+  }
+
+  .profile__description {
+    font-size: 16px;
+    line-height: 1.2;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .header__container {
+    margin: 28px 0 42px;
+  }
+
+  .header__logo {
+    max-width: 126px;
+    padding: 0 0 32px 27px;
+  }
+
+  .profile {
+    max-width: 282px;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  .profile__info {
+    padding: 36px 0 30px 0;
+  }
+
+  .profile__name {
+    min-width: 282px;
+    justify-content: center;
+    column-gap: 10px;
+  }
+
+  .profile__name-text {
+    max-width: 200px;
     font-size: 22px;
     line-height: 1.2;
   }
@@ -255,10 +275,10 @@
   }
 
   .cards {
-    width: 88%;
+    max-width: 88%;
   }
 
   .footer__content {
-    width: 88%;
+    max-width: 88%;
   }
 }
