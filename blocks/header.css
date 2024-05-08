@@ -1,9 +1,9 @@
 .header__container {
+  width: 100%;
   max-width: 882px;
-  margin-bottom: 40px;
   margin: 45px auto 40px;
   padding: 0;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid rgb(84 84 84 / 0.7);
 }
 
 .header__logo {
@@ -12,7 +12,7 @@
   padding: 0 0 41px 0;
 }
 
-@media screen and (max-width: 900px) and (min-width: 622px) {
+@media screen and (max-width: 900px) {
   .header__logo {
     max-width: 147px;
     padding: 0 0 38px 13px;

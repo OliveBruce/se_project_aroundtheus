@@ -11,6 +11,7 @@
   margin: 0;
   padding: 0 0 25px;
   max-width: 100%;
+  object-fit: cover;
 }
 
 .card__description {
@@ -49,4 +50,5 @@
 
 .card__button:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
