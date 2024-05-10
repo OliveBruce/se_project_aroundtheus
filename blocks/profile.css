@@ -92,14 +92,12 @@
 
 @media screen and (max-width: 900px) {
   .profile {
-    flex-wrap: nowrap;
     flex-direction: column;
     justify-content: center;
   }
 
   .profile__info {
     max-width: 360px;
-    width: 100%;
     padding: 36px 0 30px 0;
   }
 
@@ -112,7 +110,6 @@
   .profile__name-text {
     max-width: 300px;
     font-size: 32px;
-    line-height: 1.2;
   }
 
   .profile__button-edit {
@@ -122,34 +119,27 @@
 
   .profile__description {
     font-size: 16px;
-    line-height: 1.2;
     text-align: center;
   }
 }
 
 @media screen and (max-width: 621px) {
   .profile {
-    flex-wrap: nowrap;
-    flex-direction: column;
     padding: 0 0 36px;
   }
 
   .profile__info {
     max-width: 282px;
-    width: 100%;
     padding: 36px 0 30px 0;
   }
 
   .profile__name {
     max-width: 282px;
-    justify-content: center;
-    column-gap: 10px;
   }
 
   .profile__name-text {
     max-width: 200px;
     font-size: 22px;
-    line-height: 1.2;
   }
 
   .profile__button-edit {
@@ -159,8 +149,6 @@
 
   .profile__description {
     font-size: 14px;
-    line-height: 1.2;
-    text-align: center;
   }
 
   .profile__button-add {

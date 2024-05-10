@@ -1,4 +1,4 @@
-.header__container {
+.header {
   width: 100%;
   max-width: 882px;
   margin: 45px auto 40px;
@@ -20,7 +20,7 @@
 }
 
 @media screen and (max-width: 621px) {
-  .header__container {
+  .header {
     margin: 28px 0 42px;
   }
 
