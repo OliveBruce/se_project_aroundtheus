@@ -23,3 +23,6 @@ This project was actually really fun. I think it was great for our first project
 
 **GitHub Link**
 https://olivebruce.github.io/se_project_aroundtheus/
+
+**Video Link**
+https://drive.google.com/file/d/10Ydbl4NG3leWXFkTDvn5rAnER9q6nuu-/view?usp=sharing
