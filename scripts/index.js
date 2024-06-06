@@ -46,7 +46,16 @@ const cardTemplate =
 /* Functions */
 
 function closePopup() {
-  profileEditModal.classList.remove("modal__opened");
+  profileEditModal.classList.remove("modal_opened");
+}
+
+function openPopup() {
+  profileEditModal.classList.add("modal_opened");
+}
+
+function fillProfileForm() {
+  profileNameInput.value = profileName.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
 }
 
 function getCardElement(cardData) {
@@ -71,10 +80,8 @@ function handleProfileEditSubmit(e) {
 /* Event Listeners */
 
 profileEditBtn.addEventListener("click", () => {
-  profileNameInput.value = profileName.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-
-  profileEditModal.classList.add("modal__opened");
+  fillProfileForm();
+  openPopup();
 });
 
 profileEditModalClose.addEventListener("click", () => {
