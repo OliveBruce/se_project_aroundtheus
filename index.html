@@ -45,6 +45,7 @@
             type="button"
             aria-label="add image"
             class="profile__button-add"
+            id="profile-add-button"
           ></button>
         </section>
         <section class="gallery page__section">
@@ -58,7 +59,7 @@
     <!-- Edit modal -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close" id="profile-edit-modal-close"></button>
+        <button class="modal__close"></button>
         <h2 class="modal__heading">Edit Profile</h2>
         <form class="modal__form">
           <input
@@ -82,14 +83,15 @@
       </div>
     </div>
     <!-- Add card modal -->
-    <div class="modal" id="profile-edit-modal">
+    <div class="modal" id="profile-add-modal">
       <div class="modal__container">
-        <button class="modal__close" id="profile-edit-modal-close"></button>
+        <button class="modal__close"></button>
         <h2 class="modal__heading">New Place</h2>
         <form class="modal__form" id="add-card-form">
           <input
             type="text"
-            class="modal__input modal__input_type_title"
+            class="modal__input"
+            id="add-card-title"
             name="title"
             placeholder="Title"
             required
@@ -97,6 +99,7 @@
           <input
             type="text"
             class="modal__input modal__input_type_url"
+            id="add-card-url"
             name="url"
             placeholder="Image URL"
             required
