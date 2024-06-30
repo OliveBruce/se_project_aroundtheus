@@ -61,19 +61,17 @@
       <div class="modal__container">
         <button class="modal__close"></button>
         <h2 class="modal__heading">Edit Profile</h2>
-        <form class="modal__form">
+        <form class="modal__form" id="profile-edit-form">
           <input
             type="text"
-            class="modal__input"
-            id="profile-name-input"
+            class="modal__input modal__input_type_name"
             name="name-text"
             placeholder="Name"
             required
           />
           <input
             type="text"
-            class="modal__input"
-            id="profile-description-input"
+            class="modal__input modal__input_type_description"
             name="description"
             placeholder="Description"
             required
@@ -83,15 +81,14 @@
       </div>
     </div>
     <!-- Add card modal -->
-    <div class="modal" id="profile-add-modal">
+    <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button class="modal__close"></button>
         <h2 class="modal__heading">New Place</h2>
         <form class="modal__form" id="add-card-form">
           <input
             type="text"
-            class="modal__input"
-            id="add-card-title"
+            class="modal__input modal__input_type_title"
             name="title"
             placeholder="Title"
             required
@@ -99,7 +96,6 @@
           <input
             type="text"
             class="modal__input modal__input_type_url"
-            id="add-card-url"
             name="url"
             placeholder="Image URL"
             required
