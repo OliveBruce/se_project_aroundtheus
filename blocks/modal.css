@@ -28,6 +28,7 @@
   background-color: #fff;
   padding: 36px;
   border-radius: 10px;
+  width: 358px;
 }
 
 .modal__close {
@@ -79,7 +80,6 @@
   cursor: pointer;
   margin: 0;
   padding: 14px 0 18px;
-  width: 358px;
   border-color: transparent;
   border-radius: 2px;
   background-color: #000;
@@ -131,7 +131,6 @@
   }
 
   .modal__button {
-    width: 238px;
     font-size: 14px;
   }
 }

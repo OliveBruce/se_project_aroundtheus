@@ -14,6 +14,10 @@
   padding: 0 0 25px;
 }
 
+.card__image:hover {
+  cursor: pointer;
+}
+
 .card__description {
   max-width: 242px;
   margin: 0;

@@ -100,6 +100,11 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
+function fillProfileForm() {
+  profileNameInput.value = profileName.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+}
+
 /* Event Handlers */
 
 function handleProfileEditSubmit(evt) {
@@ -115,13 +120,13 @@ function handleAddCardSubmit(evt) {
   const link = cardUrlInput.value;
   renderCard({ name, link });
   closePopup(addCardModal);
+  addCardForm.reset();
 }
 
 /* Event Listeners */
 
 profileEditBtn.addEventListener("click", () => {
-  profileNameInput.value = profileName.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  fillProfileForm();
   openPopup(profileEditModal);
 });
 
