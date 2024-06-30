@@ -10,11 +10,16 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   padding: 0 19px;
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 .modal_opened {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
 
 .modal__container {
@@ -86,6 +91,28 @@
 
 .modal__button:hover {
   opacity: 0.8;
+}
+
+.modal__preview_container {
+  margin: auto;
+  position: relative;
+  background-color: transparent;
+  padding: 0;
+}
+
+.modal__preview_title {
+  margin: 0;
+  padding: 10px 0 0;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.modal__preview_image {
+  background-size: cover;
+  max-width: 75vw;
+  max-height: 75vh;
+  padding: 0;
 }
 
 @media screen and (max-width: 621px) {

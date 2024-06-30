@@ -105,6 +105,15 @@
       </div>
     </div>
 
+    <!-- Image Preview Modal -->
+    <div class="modal modal__preview" id="image-preview-modal">
+      <div class="modal__preview_container">
+        <button class="modal__close"></button>
+        <img src="" alt="" class="modal__preview_image" />
+        <p class="modal__preview_title"></p>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
@@ -112,6 +121,11 @@
           <h2 class="card__title"></h2>
           <button type="button" aria-label="like" class="card__button"></button>
         </div>
+        <button
+          type="button"
+          aria-label="delete"
+          class="card__delete_button"
+        ></button>
       </li>
     </template>
 

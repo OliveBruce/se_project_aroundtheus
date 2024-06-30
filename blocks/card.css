@@ -5,6 +5,7 @@
   border: none;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .card__image {
@@ -53,5 +54,25 @@
 
 .card__button:hover {
   opacity: 0.5;
+  cursor: pointer;
+}
+
+.card__delete_button {
+  outline: none;
+  background: url("../images/trash-icon.svg") no-repeat center;
+  margin: 0;
+  padding: 0;
+  width: 18px;
+  height: 19px;
+  border: none;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+}
+
+.card__delete_button:hover {
+  opacity: 0.6;
   cursor: pointer;
 }

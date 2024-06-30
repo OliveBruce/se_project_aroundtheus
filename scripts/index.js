@@ -31,6 +31,9 @@ const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const addCardModal = document.querySelector("#add-card-modal");
 const addCardForm = addCardModal.querySelector(".modal__form");
+const imagePreview = document.querySelector("#image-preview-modal");
+const previewImage = document.querySelector(".modal__preview_image");
+const previewTitle = document.querySelector(".modal__preview_title");
 
 /* Buttons & other DOM nodes */
 const profileEditBtn = document.querySelector("#profile-edit-button");
@@ -39,6 +42,7 @@ const profileName = document.querySelector(".profile__name-text");
 const profileDescription = document.querySelector(".profile__description");
 const addNewCardButton = document.querySelector("#profile-add-button");
 const addNewCardModalClose = addCardModal.querySelector(".modal__close");
+const imagePreviewClose = imagePreview.querySelector(".modal__close");
 
 /* Form data */
 const profileNameInput = profileEditModal.querySelector(
@@ -73,9 +77,21 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__button");
+  const deleteButton = cardElement.querySelector(".card__delete_button");
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__button_active");
+  });
+
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+
+  cardImageEl.addEventListener("click", () => {
+    openPopup(imagePreview);
+    previewImage.src = cardData.link;
+    previewImage.alt = cardData.name;
+    previewTitle.textContent = cardData.name;
   });
 
   cardImageEl.src = cardData.link;
@@ -120,6 +136,9 @@ profileModalClose.addEventListener("click", () => {
 });
 addNewCardModalClose.addEventListener("click", () => {
   closePopup(addCardModal);
+});
+imagePreviewClose.addEventListener("click", () => {
+  closePopup(imagePreview);
 });
 
 // Form Listeners
