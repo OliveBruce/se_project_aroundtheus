@@ -34,6 +34,13 @@ const addCardForm = addCardModal.querySelector(".modal__form");
 const imagePreview = document.querySelector("#image-preview-modal");
 const previewImage = document.querySelector(".modal__preview_image");
 const previewTitle = document.querySelector(".modal__preview_title");
+const profileContainer = profileEditModal.querySelector(
+  "#profile-edit-container"
+);
+const addCardContainer = addCardModal.querySelector("#add-card-container");
+const imagePreviewContainer = imagePreview.querySelector(
+  "#image-preview-container"
+);
 
 /* Buttons & other DOM nodes */
 const profileEditBtn = document.querySelector("#profile-edit-button");
@@ -144,6 +151,34 @@ addNewCardModalClose.addEventListener("click", () => {
 });
 imagePreviewClose.addEventListener("click", () => {
   closePopup(imagePreview);
+});
+
+// close on click outside
+profileEditModal.addEventListener("click", (event) => {
+  if (!profileContainer.contains(event.target)) {
+    closePopup(profileEditModal);
+  }
+});
+
+addCardModal.addEventListener("click", (event) => {
+  if (!addCardContainer.contains(event.target)) {
+    closePopup(addCardModal);
+  }
+});
+
+imagePreview.addEventListener("click", (event) => {
+  if (!imagePreviewContainer.contains(event.target)) {
+    closePopup(imagePreview);
+  }
+});
+
+// close on hit Escape
+document.addEventListener("keydown", (evt) => {
+  if (evt.key == "Escape") {
+    closePopup(profileEditModal);
+    closePopup(addCardModal);
+    closePopup(imagePreview);
+  }
 });
 
 // Form Listeners

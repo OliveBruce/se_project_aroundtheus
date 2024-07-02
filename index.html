@@ -58,56 +58,84 @@
     </div>
     <!-- Edit modal -->
     <div class="modal" id="profile-edit-modal">
-      <div class="modal__container">
+      <div class="modal__container" id="profile-edit-container">
         <button class="modal__close"></button>
         <h2 class="modal__heading">Edit Profile</h2>
         <form class="modal__form" id="profile-edit-form">
-          <input
-            type="text"
-            class="modal__input modal__input_type_name"
-            name="name-text"
-            placeholder="Name"
-            required
-          />
-          <input
-            type="text"
-            class="modal__input modal__input_type_description"
-            name="description"
-            placeholder="Description"
-            required
-          />
+          <label class="modal__label">
+            <input
+              type="text"
+              class="modal__input modal__input_type_name"
+              id="owner-name"
+              name="name-text"
+              placeholder="Name"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="modal__error" id="owner-name-error"></span>
+          </label>
+          <label class="modal__label">
+            <input
+              type="text"
+              class="modal__input modal__input_type_description"
+              id="owner-description"
+              name="description"
+              placeholder="Description"
+              minlength="2"
+              maxlength="400"
+              required
+            />
+            <span class="modal__error" id="owner-description-error"></span>
+          </label>
           <button type="submit" class="modal__button">Save</button>
         </form>
       </div>
     </div>
     <!-- Add card modal -->
     <div class="modal" id="add-card-modal">
-      <div class="modal__container">
+      <div class="modal__container" id="add-card-container">
         <button class="modal__close"></button>
         <h2 class="modal__heading">New Place</h2>
         <form class="modal__form" id="add-card-form">
-          <input
-            type="text"
-            class="modal__input modal__input_type_title"
-            name="title"
-            placeholder="Title"
-            required
-          />
-          <input
-            type="url"
-            class="modal__input modal__input_type_url"
-            name="url"
-            placeholder="Image URL"
-            required
-          />
-          <button type="submit" class="modal__button">Save</button>
+          <label class="modal__label">
+            <input
+              type="text"
+              class="modal__input modal__input_type_title"
+              id="card-title"
+              name="title"
+              placeholder="Title"
+              minlength="1"
+              maxlength="30"
+              required
+            />
+            <span class="modal__error" id="card-title-error"></span>
+          </label>
+          <label class="modal__label">
+            <input
+              type="url"
+              class="modal__input modal__input_type_url"
+              id="card-url"
+              name="url"
+              placeholder="Image URL"
+              required
+            />
+            <span class="modal__error" id="card-url-error"></span>
+          </label>
+          <button
+            type="submit"
+            class="modal__button modal__button_disabled"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
 
     <!-- Image Preview Modal -->
     <div class="modal modal__preview" id="image-preview-modal">
-      <div class="modal__preview_container">
+      <div class="modal__preview_container" id="image-preview-container">
         <button class="modal__close"></button>
         <img src="" alt="" class="modal__preview_image" />
         <p class="modal__preview_title"></p>
@@ -130,5 +158,6 @@
     </template>
 
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validation.js" defer></script>
   </body>
 </html>
