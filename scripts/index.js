@@ -34,7 +34,7 @@ const addCardForm = addCardModal.querySelector(".modal__form");
 const imagePreview = document.querySelector("#image-preview-modal");
 const previewImage = document.querySelector(".modal__preview_image");
 const previewTitle = document.querySelector(".modal__preview_title");
-const modal = document.querySelectorAll(".modal");
+const modals = document.querySelectorAll(".modal");
 
 /* Buttons & other DOM nodes */
 const profileEditBtn = document.querySelector("#profile-edit-button");
@@ -147,7 +147,7 @@ addNewCardButton.addEventListener("click", () => {
 });
 
 // close modal with click
-modal.forEach((modal) => {
+modals.forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("modal_opened")) {
       closePopup(modal);
