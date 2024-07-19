@@ -31,9 +31,9 @@ const initialCards = [
 /* Wrappers*/
 const cardListEl = document.querySelector(".gallery__cards");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileEditForm = profileEditModal.querySelector(".modal__form");
+const profileEditForm = document.forms["profile-edit-form"];
 const addCardModal = document.querySelector("#add-card-modal");
-const addCardForm = addCardModal.querySelector(".modal__form");
+const addCardForm = document.forms["add-card-form"];
 const imagePreview = document.querySelector("#image-preview-modal");
 const previewImage = document.querySelector(".modal__preview_image");
 const previewTitle = document.querySelector(".modal__preview_title");
@@ -102,10 +102,14 @@ function handleProfileEditSubmit(evt) {
   profileEditForm.reset();
 }
 
-function renderCard(newCard) {
+function createCard(newCard) {
   const card = new Card(newCard, cardSelector, handleImageClick);
-  const cardElement = card.getView();
-  document.querySelector(".gallery__cards").prepend(cardElement);
+  return card.getView();
+}
+
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
+  cardListEl.prepend(cardElement);
 }
 
 function handleAddCardSubmit(evt) {
@@ -113,6 +117,7 @@ function handleAddCardSubmit(evt) {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link });
+  addFormValidator.disabledButton();
   closePopup(addCardModal);
   addCardForm.reset();
 }
@@ -121,13 +126,12 @@ function handleAddCardSubmit(evt) {
 
 profileEditBtn.addEventListener("click", () => {
   fillProfileForm();
+  editFormValidator.resetValidation();
   openPopup(profileEditModal);
 });
 
 // add new card button
 addNewCardButton.addEventListener("click", () => {
-  addFormValidator.resetValidation();
-  addCardForm.reset();
   openPopup(addCardModal);
 });
 
@@ -147,10 +151,8 @@ modals.forEach((modal) => {
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 
-initialCards.forEach((cardData) => {
-  const card = new Card(cardData, cardSelector, handleImageClick);
-  const cardElement = card.getView();
-  document.querySelector(".gallery__cards").prepend(cardElement);
+initialCards.forEach((card) => {
+  renderCard(card);
 });
 
 /* Validation */

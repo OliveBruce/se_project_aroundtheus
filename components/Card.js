@@ -16,29 +16,21 @@ class Card {
   }
 
   _setEventListeners() {
-    this._cardElement
-      .querySelector(".card__button")
-      .addEventListener("click", () => {
-        this._handleLikeButton();
-      });
+    this._cardButton.addEventListener("click", () => {
+      this._handleLikeButton();
+    });
 
-    this._cardElement
-      .querySelector(".card__delete_button")
-      .addEventListener("click", () => {
-        this._handleDeleteCard();
-      });
+    this._cardDelete.addEventListener("click", () => {
+      this._handleDeleteCard();
+    });
 
-    this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handleImageClick(this._name, this._link);
-      });
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick(this._name, this._link);
+    });
   }
 
   _handleLikeButton() {
-    this._cardElement
-      .querySelector(".card__button")
-      .classList.toggle("card__button_active");
+    this._cardButton.classList.toggle("card__button_active");
   }
 
   _handleDeleteCard() {
@@ -49,6 +41,8 @@ class Card {
   getView() {
     this._cardElement = this._getTemplate();
     this._cardImage = this._cardElement.querySelector(".card__image");
+    this._cardButton = this._cardElement.querySelector(".card__button");
+    this._cardDelete = this._cardElement.querySelector(".card__delete_button");
 
     this._cardElement.querySelector(".card__title").textContent = this._name;
     this._cardImage.src = this._link;
