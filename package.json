@@ -1,0 +1,11 @@
+{
+  "name": "se_project_aroundtheus",
+  "version": "1.0.0",
+  "description": "Around the U.S. webpage is the project for Sprint 3 at TripleTen with the Software Engineering program. It was created using HTML and CSS based on a Figma design. The idea of the website it for users to create a profile that they can use to then share photos they have taken of locations around the US. It is made to have a responsive design so that when users view the page from different size screens, it will look appealing, no matter the screen. The files are organized in a flat BEM structure. All CSS styles are separated into different files based on their HTML blocks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
