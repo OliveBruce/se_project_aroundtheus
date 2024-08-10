@@ -11,13 +11,12 @@
     />
     <meta name="keywords" content="US, lakes, landmarks" />
     <title>Around The U.S</title>
-    <link href="./pages/index.css" rel="stylesheet" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header">
         <img
-          src="./images/logo.svg"
+          src="<%= require('./images/logo.svg')%>"
           alt="Around The US Logo"
           class="header__logo"
         />
@@ -25,7 +24,7 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%= require('./images/jacques-cousteau.jpg')%>"
             alt="Profile image of Jacques Cousteau"
             class="profile__avatar"
           />
@@ -156,7 +155,5 @@
         ></button>
       </li>
     </template>
-
-    <script src="./pages/index.js" type="module" defer></script>
   </body>
 </html>
