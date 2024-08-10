@@ -5,21 +5,25 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import "./index.css";
-import {
-  initialCards,
-  settings,
-  cardListEl,
-  profileEditModal,
-  profileEditForm,
-  addCardModal,
-  addCardForm,
-  profileEditBtn,
-  profileName,
-  profileDescription,
-  addNewCardButton,
-  profileNameInput,
-  profileDescriptionInput,
-} from "../utils/constants.js";
+import { initialCards, settings } from "../utils/constants.js";
+
+/* Wrappers*/
+const cardListEl = document.querySelector(".gallery__cards");
+const profileEditModal = document.querySelector("#profile-edit-modal");
+const profileEditForm = document.forms["profile-edit-form"];
+const addCardModal = document.querySelector("#add-card-modal");
+const addCardForm = document.forms["add-card-form"];
+
+/* Buttons & other DOM nodes */
+const profileEditBtn = document.querySelector("#profile-edit-button");
+const profileName = document.querySelector(".profile__name-text");
+const profileDescription = document.querySelector(".profile__description");
+const addNewCardButton = document.querySelector("#profile-add-button");
+
+/* Form data */
+const profileNameInput = profileEditModal.querySelector("#owner-name");
+const profileDescriptionInput =
+  profileEditModal.querySelector("#owner-description");
 
 /* Functions */
 
@@ -49,20 +53,16 @@ function getCardElement(cardData) {
 }
 
 function handleProfileEditSubmit(userData) {
-  console.log(userData);
-  const name = userData.name - text;
+  const name = userData.name;
   const description = userData.description;
   userInfo.setUserInfo(name, description);
   editProfilePopup.close();
 }
 
 function handleAddCardSubmit(inputData) {
-  const name = inputData.name;
-  const link = inputData.link;
+  const cardData = { name: inputData.title, link: inputData.url };
 
-  console.log(`Name: ${name}, Link: ${link}`);
-
-  renderCard({ name, link }, cardListEl);
+  renderCard(cardData, cardListEl);
   newCardPopup.close();
   addCardForm.reset();
 }
@@ -76,8 +76,8 @@ const userInfo = new UserInfo(profileName, profileDescription);
 // Form Listeners
 profileEditBtn.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
-  profileNameInput.value = userData.nameSelector;
-  profileDescriptionInput.value = userData.descriptionSelector;
+  profileNameInput.value = userData.name;
+  profileDescriptionInput.value = userData.description;
   editProfilePopup.open();
 });
 

@@ -32,23 +32,3 @@ export const settings = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error",
 };
-
-/* Wrappers*/
-export const cardListEl = document.querySelector(".gallery__cards");
-export const profileEditModal = document.querySelector("#profile-edit-modal");
-export const profileEditForm = document.forms["profile-edit-form"];
-export const addCardModal = document.querySelector("#add-card-modal");
-export const addCardForm = document.forms["add-card-form"];
-
-/* Buttons & other DOM nodes */
-export const profileEditBtn = document.querySelector("#profile-edit-button");
-export const profileName = document.querySelector(".profile__name-text");
-export const profileDescription = document.querySelector(
-  ".profile__description"
-);
-export const addNewCardButton = document.querySelector("#profile-add-button");
-
-/* Form data */
-export const profileNameInput = profileEditModal.querySelector("#owner-name");
-export const profileDescriptionInput =
-  profileEditModal.querySelector("#owner-description");

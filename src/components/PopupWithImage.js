@@ -11,10 +11,10 @@ export default class PopupWithImage extends Popup {
     );
   }
 
-  open(cardData) {
-    this._previewImageElement.src = cardData.link;
-    this._previewImageElement.alt = cardData.name;
-    this._previewImageElementTitle.textContent = cardData.name;
+  open(data) {
+    this._previewImageElement.src = data.link;
+    this._previewImageElement.alt = data.name;
+    this._previewImageElementTitle.textContent = data.name;
     super.open();
   }
 
