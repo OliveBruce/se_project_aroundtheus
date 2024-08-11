@@ -30,10 +30,7 @@ const profileDescriptionInput =
 const cardSection = new Section(
   {
     items: initialCards,
-    renderer: (cardData) => {
-      const cardElement = getCardElement(cardData);
-      cardSection.addItem(cardElement);
-    },
+    renderer: renderCard,
   },
   ".gallery__cards"
 );
@@ -62,7 +59,7 @@ function handleProfileEditSubmit(userData) {
 function handleAddCardSubmit(inputData) {
   const cardData = { name: inputData.title, link: inputData.url };
 
-  renderCard(cardData, cardListEl);
+  renderCard(cardData);
   newCardPopup.close();
   addCardForm.reset();
 }
@@ -83,16 +80,20 @@ profileEditBtn.addEventListener("click", () => {
 
 addNewCardButton.addEventListener("click", () => {
   newCardPopup.open();
-  addFormValidator.toggleButtonState();
+  formValidators["add-form"].toggleButtonState();
 });
 
 /* Validation */
+const formValidators = {};
 
-const editFormValidator = new FormValidator(settings, profileEditForm);
-editFormValidator.enableValidation();
+const formList = [...document.querySelectorAll(".modal__form")];
+formList.forEach((formElement) => {
+  const validator = new FormValidator(settings, formElement);
+  const formName = formElement.getAttribute("name");
 
-const addFormValidator = new FormValidator(settings, addCardForm);
-addFormValidator.enableValidation();
+  formValidators[formName] = validator;
+  validator.enableValidation();
+});
 
 const popupWithImage = new PopupWithImage({
   popupSelector: "#image-preview-modal",
