@@ -6,6 +6,8 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popupElement.querySelector(".modal__form");
     this._inputList = this._form.querySelectorAll(".modal__input");
+    this._saveButton = this._modalForm.querySelector(".modal__button");
+    this._saveButtonText = this._saveButton.textContent;
   }
 
   _getInputValues() {
@@ -14,6 +16,14 @@ export default class PopupWithForm extends Popup {
       this._inputData[input.name] = input.value;
     });
     return this._inputData;
+  }
+
+  modalSaving(isSaving, saveText = "Saving...") {
+    if (isSaving) {
+      this._saveButton.textContent = saveText;
+    } else {
+      this._saveButton.textContent = this._saveButtonText;
+    }
   }
 
   setEventListeners() {
