@@ -6,8 +6,10 @@ export default class Api {
 
   checkResponse(res) {
     if (!res.ok) {
+      console.log("Response NOT OK!");
       return Promise.reject(`Error: ${res.status}`);
     } else {
+      console.log("Response OK!");
       return res.json();
     }
   }
@@ -16,6 +18,7 @@ export default class Api {
     return fetch(`${this._url}/cards`, {
       headers: {
         authorization: this._token,
+        "Content-Type": "application/json",
       },
     }).then(this.checkResponse);
   }
@@ -27,6 +30,7 @@ export default class Api {
     return fetch(`${this._url}/users/me`, {
       headers: {
         authorization: this._token,
+        "Content-Type": "application/json",
       },
     }).then(this.checkResponse);
   }
@@ -35,21 +39,18 @@ export default class Api {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
-  updateUserInfo(name, about) {
+  updateUserInfo({ name, description }) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: {
         authorization: this._token,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name,
-        about,
-      }),
+      body: JSON.stringify({ name: name, about: description }),
     }).then(this.checkResponse);
   }
 
-  addCard(name, link) {
+  addCard({ name, link }) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
       headers: {
@@ -57,8 +58,8 @@ export default class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name,
-        link,
+        name: name,
+        link: link,
       }),
     }).then(this.checkResponse);
   }
@@ -67,14 +68,31 @@ export default class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._token,
+      headers: {
+        authorization: this._token,
+        "Content-Type": "application/json",
+      },
     }).then(this.checkResponse);
   }
 
   likeCardStatus(cardId, like) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: like ? "PUT" : "DELETE",
-      headers: this._token,
+      headers: {
+        authorization: this._token,
+        "Content-Type": "application/json",
+      },
+    }).then(this.checkResponse);
+  }
+
+  changeAvatar(link) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ avatar: link }),
     }).then(this.checkResponse);
   }
 }
