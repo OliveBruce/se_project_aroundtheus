@@ -149,7 +149,9 @@ function handleAddCardSubmit(inputData) {
   api
     .addCard(cardData)
     .then((res) => {
-      renderCard(res);
+      const newCard = renderCard(res);
+      cardSection.addItem(newCard);
+      console.log(newCard);
       newCardPopup.close();
       addCardForm.reset();
     })

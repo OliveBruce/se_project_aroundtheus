@@ -67,8 +67,8 @@ class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
 
-    this._setEventListeners();
     this._handleLikeButton();
+    this._setEventListeners();
 
     return this._cardElement;
   }
