@@ -14,25 +14,23 @@ export default class Api {
     }
   }
 
+  _request(url, options) {
+    return fetch(url, options).then(this.checkResponse);
+  }
+
   getInitialCards() {
-    return fetch(`${this._url}/cards`, {
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
-    }).then(this.checkResponse);
+    return this._request(`${this._url}/cards`, {
+      headers: this._token,
+    });
   }
 
   // other methods for working with the API
 
   //GET users/me
   getUserInfo() {
-    return fetch(`${this._url}/users/me`, {
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
-    }).then(this.checkResponse);
+    return this._request(`${this._url}/users/me`, {
+      headers: this._token,
+    });
   }
 
   getInfoAndCards() {
@@ -40,59 +38,44 @@ export default class Api {
   }
 
   updateUserInfo({ name, description }) {
-    return fetch(`${this._url}/users/me`, {
+    return this._request(`${this._url}/users/me`, {
       method: "PATCH",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
+      headers: this._token,
       body: JSON.stringify({ name: name, about: description }),
-    }).then(this.checkResponse);
+    });
   }
 
   addCard({ name, link }) {
-    return fetch(`${this._url}/cards`, {
+    return this._request(`${this._url}/cards`, {
       method: "POST",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
+      headers: this._token,
       body: JSON.stringify({
         name: name,
         link: link,
       }),
-    }).then(this.checkResponse);
+    });
   }
 
   //method to delete card from server
   deleteCard(cardId) {
-    return fetch(`${this._url}/cards/${cardId}`, {
+    return this._request(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
-    }).then(this.checkResponse);
+      headers: this._token,
+    });
   }
 
   likeCardStatus(cardId, like) {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
+    return this._request(`${this._url}/cards/${cardId}/likes`, {
       method: like ? "PUT" : "DELETE",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
-    }).then(this.checkResponse);
+      headers: this._token,
+    });
   }
 
   changeAvatar(link) {
-    return fetch(`${this._url}/users/me/avatar`, {
+    return this._request(`${this._url}/users/me/avatar`, {
       method: "PATCH",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
+      headers: this._token,
       body: JSON.stringify({ avatar: link }),
-    }).then(this.checkResponse);
+    });
   }
 }

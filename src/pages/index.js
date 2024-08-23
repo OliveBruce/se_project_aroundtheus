@@ -76,7 +76,10 @@ const userInfo = new UserInfo(profileName, profileDescription, avatarImage);
 
 const api = new Api({
   url: "https://around-api.en.tripleten-services.com/v1",
-  token: "180fed17-f626-4f59-8309-4b759f5f0038",
+  token: {
+    authorization: "180fed17-f626-4f59-8309-4b759f5f0038",
+    "Content-Type": "application/json",
+  },
 });
 
 api
@@ -86,9 +89,7 @@ api
     userInfo.setUserAvatar(userData.avatar); //render profile pic
     cardSection.renderItems(cards);
   })
-  .catch((err) => {
-    console.error(err);
-  });
+  .catch(console.error);
 
 const cardSection = new Section(
   {
@@ -123,61 +124,59 @@ function renderCard(data) {
   return card.getView();
 }
 
+function handleSubmit(request, popupInstance, loadingText = "Saving...") {
+  popupInstance.saveModal(true, loadingText);
+  request()
+    .then(() => {
+      popupInstance.close();
+    })
+    .catch(console.error)
+    .finally(() => {
+      popupInstance.saveModal(false);
+    });
+}
+
 function handleProfileEditSubmit(userData) {
   const name = userData.name;
   const description = userData.description;
-  editProfilePopup.modalSaving(true);
 
-  api
-    .updateUserInfo({ name: name, description: description })
-    .then(() => {
-      userInfo.setUserInfo({ name: name, description: description });
-      editProfilePopup.close();
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      editProfilePopup.modalSaving(false);
-    });
+  function makeRequest() {
+    return api
+      .updateUserInfo({ name: name, description: description })
+      .then(() => {
+        userInfo.setUserInfo({ name: name, description: description });
+        editProfilePopup.close();
+      });
+  }
+
+  handleSubmit(makeRequest, editProfilePopup);
 }
 
 function handleAddCardSubmit(inputData) {
   const cardData = { name: inputData.title, link: inputData.url };
-  newCardPopup.modalSaving(true);
 
-  api
-    .addCard(cardData)
-    .then((res) => {
+  function makeRequest() {
+    return api.addCard(cardData).then((res) => {
       const newCard = renderCard(res);
       cardSection.addItem(newCard);
       console.log(newCard);
       newCardPopup.close();
       addCardForm.reset();
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      newCardPopup.modalSaving(false);
     });
+  }
+
+  handleSubmit(makeRequest, newCardPopup);
 }
 
 function handleChangeAvatarSubmit(avatarUrl) {
-  avatarChangePopup.modalSaving(true);
-
-  api
-    .changeAvatar(avatarUrl.link)
-    .then((userData) => {
+  function makeRequest() {
+    return api.changeAvatar(avatarUrl.link).then((userData) => {
       userInfo.setUserAvatar(userData.avatar);
       avatarChangePopup.close();
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      avatarChangePopup.modalSaving(false);
     });
+  }
+
+  handleSubmit(makeRequest, avatarChangePopup);
 }
 
 function handleDeleteCardSubmit(cardData) {
@@ -201,8 +200,7 @@ function handleImageClick(cardData) {
 // Form Listeners
 profileEditBtn.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
-  profileNameInput.value = userData.name;
-  profileDescriptionInput.value = userData.description;
+  editProfilePopup.setInputValues(userData);
   editProfilePopup.open();
 });
 

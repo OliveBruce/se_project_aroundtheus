@@ -22,7 +22,7 @@ export default class PopupWithForm extends Popup {
     return this._inputData;
   }
 
-  modalSaving(isSaving, saveText = "Saving...") {
+  saveModal(isSaving, saveText = "Saving...") {
     if (isSaving) {
       this._saveButton.textContent = saveText;
     } else {
@@ -30,12 +30,17 @@ export default class PopupWithForm extends Popup {
     }
   }
 
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      input.value = data[input.name];
+    });
+  }
+
   setEventListeners() {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       const formValues = this._getInputValues();
       this._handleFormSubmit(formValues);
-      this._form.reset();
     });
     super.setEventListeners();
   }
