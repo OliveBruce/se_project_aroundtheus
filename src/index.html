@@ -23,11 +23,19 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%= require('./images/jacques-cousteau.jpg')%>"
-            alt="Profile image of Jacques Cousteau"
-            class="profile__avatar"
-          />
+          <div style="position: relative">
+            <img
+              src="<%= require('./images/jacques-cousteau.jpg')%>"
+              alt="Profile image of Jacques Cousteau"
+              class="profile__avatar"
+            />
+            <button
+              class="profile__avatar-edit-button"
+              id="avatar-change-button"
+              type="button"
+              aria-label="edit"
+            ></button>
+          </div>
           <div class="profile__info">
             <div class="profile__name">
               <h1 class="profile__name-text">Jacques Cousteau</h1>
@@ -131,6 +139,32 @@
         </form>
       </div>
     </div>
+    <!-- Change Avatar modal -->
+    <div class="modal" id="change-avatar-modal">
+      <div class="modal__container" id="change-avatar-container">
+        <button class="modal__close"></button>
+        <h2 class="modal__heading">Change profile picture</h2>
+        <form class="modal__form" id="change-avatar-form" name="avatar-form">
+          <label class="modal__label">
+            <input
+              type="url"
+              class="modal__input modal__input_type_url"
+              id="change-avatar-url-input"
+              name="link"
+              placeholder="Img link"
+              required
+            />
+            <span
+              class="modal__error"
+              id="change-avatar-url-input-error"
+            ></span>
+          </label>
+          <button type="submit" class="modal__button modal__button_disabled">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
 
     <!-- Image Preview Modal -->
     <div class="modal modal__preview" id="image-preview-modal">
@@ -141,7 +175,19 @@
       </div>
     </div>
 
-    <template id="card-template">
+    <!-- Confirm Delete Modal -->
+    <div class="modal" id="confirm-delete-modal">
+      <div class="modal__container" id="confirm-delete-container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">Are you sure?</p>
+        <form class="modal__form" id="confirm-delete-form">
+          <button class="modal__button" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Card Template -->
+    <template class="card-template" id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
         <div class="card__description">
